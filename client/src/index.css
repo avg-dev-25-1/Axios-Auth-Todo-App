@@ -1,0 +1,192 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: rgb(233, 241, 249);
+  display: flex;
+  justify-content: center;
+  font-family:'Trebuchet MS', Aerial, serif;
+}
+
+.app{
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px rgba(0, 0, 0, 0.08) 0 0 0 1px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 800px;
+  margin-top: 50px;
+}
+
+
+
+/*List header*/
+.list-header{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
+}
+
+.list-button, .button-container, .info-container{
+  display: flex;
+  align-items: center;
+}
+
+.button-container button{
+  margin: 0px 5px;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  background-color: transparent;
+}
+
+.create{
+  border: 1.5px solid rgb(108, 115, 148);
+  color: rgb(108, 115, 148);
+  font-weight: bold;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.create:hover{
+  background-color: rgb( 131 , 138, 172);
+  text-transform: uppercase;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.create:active{
+  background-color: rgb(108, 115, 148);
+  color: rgb(255, 255, 255);
+}
+
+.signout{
+  border: 1.5px solid rgb(255, 175, 163);
+  background-color: rgb(255, 175, 163);
+  color: rgb(158, 8, 8);
+  font-weight: bold;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+.signout:hover{
+  border: 1.5px solid rgb(175, 94, 94) !important;
+  background-color: rgb(175, 94, 94);
+  color: antiquewhite;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.signout:active{
+  border: 1.5px solid rgb(175, 81, 81)!important;
+  background-color: rgb(175, 81, 81)!important;
+  color: rgb(255, 255, 255);
+}
+
+/* List item */
+.list-item{
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0 0 0 1px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-button{
+  gap: 5px;
+  margin: 5px;
+  font-size: 0.8rem;
+}
+
+.edit{
+  border: 1.5px solid rgb(141, 181, 145);
+  color: rgb(141, 181, 145);
+  padding: 3px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.edit:hover{
+  background-color: rgb(182, 223, 186);
+}
+
+.delete{
+  border: 1px solid rgb(255, 175, 163);
+  color: rgb(255, 175, 163);
+  padding: 3px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.delete:hover{
+  background-color: rgb(255, 201, 193);
+}
+
+.delete:active{
+  /* border: 1.5px solid rgb(255, 175, 163); */
+  background-color: rgb(255, 175, 163);
+  color: rgb(255, 255, 255);
+}
+
+.edit:active{ /*This class will be applied when we click/hold click on that button*/
+  border: 1.5px solid rgb(141, 181, 145);
+  color: rgb(255, 255, 255);
+  background-color:rgb(141, 181, 145);
+}
+
+.task-title{
+  width: 300px;
+}
+
+/*Tick Icon*/
+.tick{
+  padding: 10px;
+}
+
+/*Modal*/
+.overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal{
+  width: 500px;
+  background-color: rgb(255, 255, 255);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+}
+
+.form-title-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-title-container button{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.form-title-container button:active{
+  color: rgb(255, 50, 50);
+}
+
+.modal form{
+  display: flex;
+  flex-direction: column;
+}
+
+.modal label{
+  font-size: 13px;
+}
+
+input{
+  margin: 11px 0px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1.5px solid rgb(230, 232, 236);
+}
