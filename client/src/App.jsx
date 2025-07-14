@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import ListHeader from "./assets/ListHeader";
 import axios from "axios";
 import ListItem from "./assets/ListItem";
+import Auth from "./assets/Auth";
+import { useCookies } from "react-cookie";
 
 const App = () => {
-  const userEmail = "abc@test.com";
+  const [cookies, setCookie, removeCookie] = useCookies(null);
+  const authToken = cookies.AuthToken;
+  const userEmail = cookies.Email;
   const [tasks, setTasks] = useState([]);
 
   const getData = async () => {
@@ -19,7 +23,9 @@ const App = () => {
     }
   };
   useEffect(() => {
-    getData();
+    if (authToken) {
+      getData();
+    }
   }, []);
   console.log(tasks);
 
@@ -29,10 +35,15 @@ const App = () => {
 
   return (
     <div className="app">
-      <ListHeader listname={"To do list 📝"} getData={getData} />
-      {sortedTasks?.map((task) => (
-        <ListItem key={task.id} task={task} getData={getData} />
-      ))}
+      {!authToken && <Auth />}
+      {authToken && (
+        <>
+          <ListHeader listname={"To do list 📝"} getData={getData} />
+          {sortedTasks?.map((task) => (
+            <ListItem key={task.id} task={task} getData={getData} />
+          ))}
+        </>
+      )}
     </div>
   );
 };

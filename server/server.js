@@ -1,7 +1,9 @@
 import cors from 'cors';
 import express from 'express';
 import pool from './db.js';
-import {v4 as uuid} from 'uuid'
+import {v4 as uuid} from 'uuid';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const app = express();
 const port = 5000;
@@ -71,6 +73,32 @@ app.delete('/todos/:id', async(req, res) => {
   }
 })
 
-//
+//endpoint - signup and login
+
+//signup
+app.post('/signup', async(req, res) => {
+  const {email, password} = req.body;
+  const salt = bcrypt.genSaltSync(10)
+  const hashedPassword = bcrypt.hashSync(password, salt)
+  try {
+    const signup = await pool.query(`INSERT INTO users (email, hashed_password) VALUES($1, $2)`, [email, password]);
+    const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'})
+    res.json({email, token})
+  } catch (error) {
+    console.error(error);
+    if(err){
+      res.json({detail: err.detail})
+    }
+  }
+});
+
+//login
+app.post('/login', async(req, res) => {
+  const {email, password} = req.body;
+  try {
+  } catch (error) {
+  }
+})
+
 
 app.listen(port, console.log(`Server running on http://localhost:${port}`));
