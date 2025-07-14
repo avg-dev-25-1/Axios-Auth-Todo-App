@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Cookies, useCookies } from "react-cookie";
 
 const Auth = () => {
-  const [cookie, setCookie, removeCookie] = useCookies(null);
+  const [cookie, setCookie] = useCookies(null);
   const [isLogIn, setIsLogin] = useState(true);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -41,6 +41,10 @@ const Auth = () => {
       }
     } catch (error) {
       console.error(error);
+      setError(
+        error?.response?.data?.detail ||
+          "Something went wrong. Please try again"
+      );
     }
   };
   return (
