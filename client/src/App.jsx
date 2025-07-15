@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ListHeader from "./assets/ListHeader";
 import axios from "axios";
 import ListItem from "./assets/ListItem";
@@ -11,7 +11,8 @@ const App = () => {
   const userEmail = cookies.Email;
   const [tasks, setTasks] = useState([]);
 
-  const getData = async () => {
+  //Note: getData memorised with useCallback(prevents recreation of getData until its dependencies change)
+  const getData = useCallback(async () => {
     try {
       const response = await axios.get(
         `http://localhost:5000/todos/${userEmail}`
@@ -21,13 +22,13 @@ const App = () => {
     } catch (error) {
       console.error("Error fetching the todos:", error);
     }
-  };
+  }, [userEmail]); //As per the note re-create only if userEmail(dependency) changes
+
   useEffect(() => {
     if (authToken) {
       getData();
     }
-  }, []);
-  console.log(tasks);
+  }, [authToken, getData]);
 
   const sortedTasks = [...tasks].sort(
     (a, b) => new Date(a.date) - new Date(b.date)

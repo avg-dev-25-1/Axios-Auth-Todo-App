@@ -4,7 +4,9 @@ import { useCookies } from "react-cookie";
 
 const ListHeader = ({ listname, getData }) => {
   const [showModal, setShowModal] = useState(false);
-  const [removeCookie] = useCookies(null);
+  const [cookies, setCookie, removeCookie] = useCookies(null);
+
+  //do not remove cookies, setCookie as they hold the email and authToken even if they are not in the code base
 
   const signOut = () => {
     console.log("Signed Out Successfully");

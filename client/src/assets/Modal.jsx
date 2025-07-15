@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 
 const Modal = ({ mode, setShowModal, task, getData }) => {
   const editMode = mode === "edit" ? true : false;
-  const [cookies] = useCookies(null);
+  const [cookies, setCookie, removeCookie] = useCookies(null);
 
   const [data, setData] = useState({
     user_email: editMode ? task.user_email : cookies.Email,
