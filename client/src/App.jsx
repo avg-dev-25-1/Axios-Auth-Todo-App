@@ -1,7 +1,6 @@
 import { useCookies } from "react-cookie";
 import {
-  BrowserRouter,
-  Router,
+  BrowserRouter as Router,
   Route,
   Navigate,
   Routes,
@@ -14,14 +13,16 @@ const App = () => {
   const authToken = cookie.AuthToken;
 
   return (
-    <Routes>
-      <Route path="/" element={authToken ? <Dashboard /> : <Auth />} />
-      <Route
-        path="/dashboard"
-        element={authToken ? <Dashboard /> : <Navigate to="/" />}
-      />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
+    <Router>
+      <Routes>
+        <Route path="/" element={authToken ? <Dashboard /> : <Auth />} />
+        <Route
+          path="/dashboard"
+          element={authToken ? <Dashboard /> : <Navigate to="/" />}
+        />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
   );
 };
 

@@ -45,8 +45,8 @@ const Auth = () => {
     const endpoint = isLogin ? "login" : "signup";
     try {
       const response = await axios.post(`http://localhost:5000/${endpoint}`, {
-        email: data.email,
-        password: data.password,
+        email: data.email, //send the email (data.email) from input to backend(by matching request terms(req.body) in backend which id LHS(before ":") of expression email:data.email)
+        password: data.password, //same explanation holds good
       });
       const result = response.data;
 
@@ -54,7 +54,7 @@ const Auth = () => {
         setError(result.detail);
         // console.log(`Logged in as ${result.email}`);
       } else {
-        setCookie("Email", result.email);
+        setCookie("Email", result.email); //this is same as response.data.email
         setCookie("AuthToken", result.token);
         navigate("/dashboard");
       }
