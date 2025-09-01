@@ -3,8 +3,8 @@ import { useCookies } from "react-cookie";
 import useTaskContext from "./context/useTaskContext";
 import { useCallback, useEffect } from "react";
 import ListHeader from "./ListHeader";
-import ListItem from "./ListItem";
 import Modal from "./Modal";
+import ListItem from "./ListItem";
 
 const Dashboard = () => {
   const [cookie] = useCookies();
@@ -17,8 +17,8 @@ const Dashboard = () => {
       const response = await axios.get(
         `http://localhost:5000/todos/${userEmail}`
       );
-      // console.log("Fetched todos from the backend:", response.data); --> check whether the response holds "data" key then use it as response.data to send that to front end react to update webpage
-      dispatch({ type: "SET_TASKS", payload: response.data.rows || [] });
+      console.log("Fetched todos from the backend:", response.data); //--> check whether the response holds "data" key then use it as response.data to send that to front end react to update webpage
+      dispatch({ type: "SET_TASKS", payload: response.data });
     } catch (error) {
       console.error("Error fetching the todos:", error);
     }
@@ -43,9 +43,17 @@ const Dashboard = () => {
     <div className="app">
       <ListHeader listName="Todo List 📝" />
       <p className="user-email">Welcome back {userEmail}</p>
-      {sortedTasks.map((task) => (
-        <ListItem key={task.id} task={task} />
-      ))}
+      {sortedTasks
+        .filter(
+          (task) =>
+            task.id &&
+            task.user_email &&
+            typeof task.title === "string" &&
+            task.title.trim() !== ""
+        )
+        .map((task) => (
+          <ListItem key={task.id} task={task} />
+        ))}
 
       {state.showModal && (
         <Modal mode={state.modalMode} task={state.currentItem} />
