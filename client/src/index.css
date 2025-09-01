@@ -1,0 +1,175 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: rgb(233, 241, 249);
+  display: flex;
+  justify-content: center;
+  font-family: 'Trebuchet MS', Arial, serif;
+}
+
+.auth-container{
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  height: 100%;
+
+}
+
+.auth-container-box{
+  margin-top: 20px;
+  width: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+}
+
+.auth-container-box form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  height: 350px;
+  padding: 30px;
+}
+
+.auth-container-box form input[type="email"],
+.auth-container-box form input[type="password"],
+.auth-container-box form input[type="text"]{
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Alternative to above one is below
+
+.auth-container-box form input:not([type="submit"]){
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border:  1px solid #ccc;
+  border-radius: 4px;
+} */
+
+.auth-options{
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.auth-options span{
+  color: #51a5ff;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 4px;
+}
+
+.auth-options span:hover{
+  font-weight: bold;
+  color: #042e5a;
+}
+
+.list-header{
+  display: flex;
+  gap: 400px;
+  width: 100%;
+  border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
+  max-width: 900px;
+}
+.button-container{
+  display: flex;
+  align-items: center;
+}
+
+.button-container button{
+  margin: 0px 5px;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  background-color: transparent;
+}
+
+.overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  background-color: rgba(red, 0, 0, 0.5);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal{
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  top: -100px;
+  width: 500px;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+}
+.form-title-container{
+  display: flex;
+  justify-content: space-between;
+}
+.form-title-container button{
+  border: none;
+  justify-content: space-between;
+  cursor: pointer;
+  background:none;
+  height: 25px; /*height, line-height and padding ensured that the X button did not displace on clicking it */
+  line-height: 20px;
+  padding: 0;
+}
+.form-title-container button:active{
+  color: rgb(255, 255, 255);
+  background-color: grey;
+  border-radius: 4px;
+  height: 25px;
+  width: 20px;
+}
+.modal form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.modal label{
+  font-size: 13px;
+}
+.modal form button{
+  width: 30%;
+  display: block;
+  margin: 20px auto 0 auto;
+}
+.modal form button:hover{
+  width: 30%;
+  color: white;
+}
+
+.list-item{
+  width: 100%;
+  box-shadow: rgb(0, 0, 0, 0.08) 0 0 0 1px;
+  margin: 10px;
+  background-color: azure;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-title{
+  width: 300px;
+}
+.info-container{}
+.list-button{
+  margin: 0px 15px 0 0;
+  display: flex;
+  gap: 10px;
+}
+
+
+
+
+

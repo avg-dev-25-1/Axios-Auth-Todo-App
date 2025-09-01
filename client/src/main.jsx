@@ -14,9 +14,7 @@ if (root) {
     <React.StrictMode>
       <CookiesProvider>
         <TaskProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <App />
         </TaskProvider>
       </CookiesProvider>
     </React.StrictMode>
